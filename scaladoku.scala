@@ -15,8 +15,27 @@ object scaladoku {
             //Checks validity of generated puzzle states
             def valid(puzzle: List(List(Int))): Boolean = {
 
+                var valid = true;
+
+                //Takes a single list of 9 numbers and verifies it's validity
+                def listCheck(list: List(Int)): Boolean = {
+                     
+                    var used = List(false, false, false, false, false, false, false, false, false);
+                    list.map(
+                        num-1 => {
+                            if (!used(num)) {
+                                used(num) = true;
+                            } else {
+                                false;
+                            }
+                        }
+                    ).notContains(false);
+                }
+
                 //Check each 1x9 row
-                
+                puzzle.map(
+                    row => listCheck(row);
+                ).notContains(false);
 
                 //Check each 9x1 column
 
